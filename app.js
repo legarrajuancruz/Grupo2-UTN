@@ -88,6 +88,5 @@ app.use((req, res, next) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log("init");
-  // console.log(path.join(__dirname, '/public/upload'));
+  console.log(`Servidor corriendo en puerto ${PORT}`);
 });
