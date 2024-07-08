@@ -81,6 +81,24 @@ app.post("/upload", upload.single("file"), (req, res) => {
 //   }
 // });
 
+app.get("/personajes", async (req, res) => {
+  try {
+    const response = await axios.get(
+      "https://hp-api.herokuapp.com/api/characters"
+    );
+    const characters = response.data;
+    if (characters) {
+      console.log("Personajes cargados con exito");
+      res
+        .status(200)
+        .render("personajes", { characters, layout: "layouts/main" });
+    }
+  } catch (error) {
+    console.error("Error al obtener los personajes");
+    res.status(500).send("Error al leer los personajes");
+  }
+});
+
 // Manejo de errores 404
 app.use((req, res, next) => {
   res.status(404).render("error404", { title: "Página no encontrada" });
