@@ -1,0 +1,33 @@
+<div class="container">
+  <br />
+  <table id="myTable">
+    <caption>Game of Thrones</caption>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Casa</th>
+        <th>Titulo</th>
+        <th>Imagen</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each characters}}
+        <tr>
+          <td>{{fullName}}</td>
+          <td>{{family}}</td>
+          <td>{{title}}</td>
+          <td>
+            <img src="{{imageUrl}}" alt="" width="150" />
+          </td>
+          <td>
+            <a href="/game_person/{{id}}"><span
+                class="material-symbols-outlined"
+              >visibility</span></a>
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+  <a href="/inicio">Volver al inicio</a>
+</div>

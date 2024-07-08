@@ -55,3 +55,48 @@ body {
   color: rgb(179, 215, 0);
   transform: scale(1.5) translateX(-10%) translateX(10%);
 }
+
+table {
+  width: 100%;
+  /* border: #b2b2b2 1px solid; */
+  border-collapse: collapse;
+}
+thead {
+  background: #28916eb0;
+  color: white;
+}
+th {
+  padding: 20px 15px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+td {
+  padding: 10px;
+  border-bottom: solid 1px #c1c8ce;
+}
+/* td, th {
+    border: black 1px solid;
+    font-weight: 300;
+} */
+table tr td img {
+  width: 50px;
+}
+.body-card {
+  display: flex;
+}
+.details {
+  margin-left: 60px;
+}
+.details h5 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.table-load td {
+  text-align: center;
+}
+
+table.dataTable thead > tr > th.dt-orderable-asc {
+  font-weight: 400 !important;
+}

@@ -66,21 +66,6 @@ app.post("/upload", upload.single("file"), (req, res) => {
   });
 });
 
-// app.get("/movies/populares", async (req, res) => {
-//   try {
-//     const response = await axios.get(
-//       "https://api.themoviedb.org/3/movie/popular",
-//       {
-//         params: {
-//           api_key: process.env.TMDB_API_KEY,
-//         },
-//       }
-//     );
-//   } catch (error) {
-//     console.error(error);
-//   }
-// });
-
 app.get("/personajes", async (req, res) => {
   try {
     const response = await axios.get(
@@ -96,6 +81,39 @@ app.get("/personajes", async (req, res) => {
   } catch (error) {
     console.error("Error al obtener los personajes");
     res.status(500).send("Error al leer los personajes");
+  }
+});
+
+app.get("/game_api", async (req, res) => {
+  try {
+    const response = await axios.get(
+      "https://thronesapi.com/api/v2/Characters"
+    );
+    const characters = response.data;
+    res.render("character", {
+      layout: "layouts/main",
+      characters,
+    });
+  } catch (error) {
+    console.error("Error en la api", error);
+  }
+});
+
+app.get("/game_person/:id", async (req, res) => {
+  let id = req.params.id;
+  console.log(id);
+  try {
+    const response = await axios.get(
+      `https://thronesapi.com/api/v2/Characters/${id}`
+    );
+    const person = response.data;
+    console.log(person);
+    res.render("person", {
+      layout: "layouts/main",
+      person,
+    });
+  } catch (error) {
+    console.error("Error en la api", error);
   }
 });
 
