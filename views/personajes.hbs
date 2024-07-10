@@ -1,9 +1,17 @@
 <div class="grupo">
-  {{#each characters}}
-    <div class="caracteres">
-      <h3>{{this.name}}</h3>
-      <h4>{{this.id}}</h4>
-      <br />
-    </div>
-  {{/each}}
+  <div class="caracteres">
+    {{#each characters}}
+      {{#eq this.gender "male"}}
+        <div class="character">
+          <h2>{{this.name}}</h2>
+          <p>Gender: {{this.gender}}</p>
+          {{#if this.wand}}
+            <p>Wood: {{this.wand.wood}}</p>
+            <p>Core: {{this.wand.core}}</p>
+          {{/if}}
+          <br />
+        </div>
+      {{/eq}}
+    {{/each}}
+  </div>
 </div>

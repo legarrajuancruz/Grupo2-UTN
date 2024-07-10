@@ -66,6 +66,10 @@ app.post("/upload", upload.single("file"), (req, res) => {
   });
 });
 
+hbs.registerHelper("eq", function (val1, val2, options) {
+  return val1 === val2 ? options.fn(this) : options.inverse(this);
+});
+
 app.get("/personajes", async (req, res) => {
   try {
     const response = await axios.get(
@@ -76,7 +80,7 @@ app.get("/personajes", async (req, res) => {
       console.log("Personajes cargados con exito");
       res
         .status(200)
-        .render("personajes", { characters, layout: "layouts/main" });
+        .render("personajes", { layout: "layouts/main", characters });
     }
   } catch (error) {
     console.error("Error al obtener los personajes");
